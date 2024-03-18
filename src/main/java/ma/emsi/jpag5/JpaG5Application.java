@@ -26,17 +26,29 @@ public class JpaG5Application implements CommandLineRunner {
         List<Product> products=productRepository.findAll();
         products.forEach(p->{
             System.out.println(p.toString());
-            System.out.println("***********************");
 
         });
+        System.out.println("***********************");
+
         Product product=productRepository.findById(Long.valueOf(1)).get();
         System.out.println(product.toString());
         System.out.println("***********************");
         List<Product>productList=productRepository.findByNameContains("C");
         productList.forEach(p ->{
             System.out.println(p.toString());
-            System.out.println("***********************");
         } );
+        System.out.println("***********************");
+        List<Product> productList2 =productRepository.findByNameContains("%C%");
+        productList2.forEach(p -> {
+            System.out.println(p.toString());
+        });
+        System.out.println("***********************");
+        List<Product> productList3 = productRepository.searchByPrice(3000);
+        productList3.forEach(p -> {
+            System.out.println( " sup a 3000 methode  "+p.toString());
+        });
+
+
 
     }
 
